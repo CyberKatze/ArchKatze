@@ -54,7 +54,7 @@ script (`install.sh`).
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Authors
-
+- [Mehrdad Shahidi](https://github.com/CyberKatze)
 
 
 
