@@ -1,0 +1,296 @@
+# vim:fileencoding=utf-8:foldmethod=marker 
+
+# Base system {{{
+iptables-nft
+base
+base-devel
+archlinux-keyring
+cryptsetup
+device-mapper
+diffutils
+edk2-shell
+inetutils
+less
+linux
+linux-firmware
+linux-headers
+logrotate
+man-db
+man-pages
+mdadm
+mkinitcpio
+mkinitcpio-busybox
+mkinitcpio-nfs-utils
+perl
+s-nail
+sudo
+sysfsutils
+systemd-sysvcompat
+texinfo
+which
+vi
+# }}}
+
+# Filesystem {{{
+btrfs-progs
+dosfstools
+e2fsprogs
+exfatprogs
+f2fs-tools
+gvfs
+gvfs-afc
+gvfs-gphoto2
+gvfs-mtp
+gvfs-nfs
+gvfs-smb
+jfsutils
+lvm2
+mtools
+nfs-utils
+nilfs-utils
+ntfs-3g
+reiserfsprogs
+xfsprogs
+# }}}
+
+# Boot {{{
+efibootmgr
+efitools
+grub
+os-prober
+refind
+# }}}
+
+# HARDWARE {{{
+
+## CPU {{{
+amd-ucode
+intel-ucode
+# }}}
+
+## X system {{{
+mesa
+mesa-utils
+#nvidia-dkms
+#nvidia-utils
+xf86-input-libinput
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-intel
+xorg-server
+xorg-xdpyinfo
+xorg-xinit
+xorg-xinput
+xorg-xkill
+xorg-xrandr
+# }}}
+
+## Network hardware {{{
+b43-fwcutter
+broadcom-wl-dkms
+linux-atm
+# }}}
+
+## General hardware {{{
+lsscsi
+sg3_utils
+smartmontools
+usbutils
+# }}}
+
+## Audio hardware {{{
+alsa-firmware
+alsa-plugins
+alsa-utils
+ffmpegthumbnailer
+gst-libav
+gst-plugin-pipewire
+gst-plugins-bad
+gst-plugins-ugly
+libdvdcss
+paprefs
+pavucontrol
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+rtkit
+sof-firmware
+wireplumber
+# }}}
+# }}}
+
+# SOFTWARE {{{
+
+## General system {{{
+bash-completion
+dialog
+dmraid
+duf
+fakeroot
+fish
+freetype2
+git
+glances
+python-packaging
+gpm
+gptfdisk
+haveged
+hwdetect
+hwinfo
+kitty
+libgsf
+libopenraw
+mlocate
+ntp
+pacman-contrib
+pkgfile
+poppler-glib
+power-profiles-daemon
+rebuild-detector
+reflector
+rsync
+tldr
+tmux
+unrar
+unzip
+wget
+xdg-user-dirs-gtk
+xdg-utils
+xz
+neofetch
+# }}}
+
+## Network {{{
+bind
+dhclient
+dnsmasq
+ethtool
+gnu-netcat
+iwd
+modemmanager
+nbd
+ndisc6
+net-tools
+netctl
+networkmanager
+networkmanager-openvpn
+nmap
+nss-mdns
+openconnect
+openvpn
+ppp
+pptpclient
+rp-pppoe
+usb_modeswitch
+vpnc
+whois
+wireless-regdb
+wireless_tools
+wpa_supplicant
+xl2tpd
+# }}}
+
+## Bluetooth {{{
+bluez
+bluez-utils
+blueberry
+# }}}
+
+## Firewall {{{
+firewalld
+python-pyqt5
+python-capng
+# }}}
+# }}}
+
+# ISO {{{
+
+# Live iso specific {{{
+arch-install-scripts
+memtest86+
+mkinitcpio-archiso
+pv
+syslinux
+# }}}
+
+# Live iso tools {{{
+clonezilla
+gpart
+gparted
+grsync
+hdparm
+# }}}
+# }}}
+
+# DESKTOP {{{
+
+## Display Mananger
+
+## Desktop environment
+sway
+swayidle
+swaylock
+swaybg
+waybar
+polkit-gnome
+thunar
+grim
+slurp
+wofi
+mako
+wayland-protocols
+xorg-xwayland
+egl-wayland
+gtk-layer-shell
+xdg-desktop-portal-wlr
+brightnessctl
+pamixer
+wl-clipboard
+network-manager-applet
+
+## Editor
+vim
+
+## Archive
+file-roller
+
+## Image viewer
+ristretto
+
+## Video player
+parole
+
+## Browser
+firefox
+
+# }}}
+
+# Fonts {{{
+adobe-source-han-sans-cn-fonts
+adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
+cantarell-fonts
+noto-fonts
+noto-fonts-emoji
+ttf-bitstream-vera
+ttf-dejavu
+ttf-liberation
+ttf-opensans
+# }}}
+
+# VM SUPPORT {{{
+# Qemu
+qemu-guest-agent
+## Spice
+spice-vdagent
+## Virtual-box
+virtualbox-guest-utils
+## VMware
+open-vm-tools
+xf86-input-vmmouse
+xf86-video-vmware
+#}}}
+
+# Custom yay package {{{
+neovim
+# }}}
