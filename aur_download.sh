@@ -30,7 +30,7 @@ Download() {
     printf "create temp"
     git clone $pck_url ./tmp/$pck_name
     # Check if we have the package or not
-    if [ -e "$p/PKGBUILD" ]
+    if [ -e "$pck_name/PKGBUILD" ]
     then 
       remote_ver=$(get_version "tmp/$pck_name/PKGBUILD")
       local_ver=$(get_version "$pck_name/PKGBUILD")
@@ -40,7 +40,7 @@ Download() {
         rm -rf $pck_name
         mv tmp/$pck_name $pck_name
         pushd $pck_name 
-        makepkg -c
+        makepkg -cs
         popd
       else
         printf "\e[35;1m Package is up to date \e[0m \n"
@@ -51,7 +51,7 @@ Download() {
         rm -rf $pck_name
         mv tmp/$pck_name $pck_name
         pushd $pck_name 
-        makepkg -c
+        makepkg -cs
         popd
     fi
   popd
