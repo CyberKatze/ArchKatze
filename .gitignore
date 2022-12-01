@@ -3,3 +3,4 @@ airootfs/root/pkg
 TEMPMNT/
 out/
 local/
+aur_repo/

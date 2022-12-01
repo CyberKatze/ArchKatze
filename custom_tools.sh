@@ -5,6 +5,7 @@ script_path=$(readlink -f ${0%/*})
 # Custom variables
 work_dir="work"
 out_dir="out"
+aur_dir="aur_repo"
 temp_mnt="${script_path}/TEMPMNT"
 custom_pkg_dir="${script_path}/airootfs/root/pkg"
 UPDATECACHE=0
@@ -35,7 +36,10 @@ make_folder() {
         mkdir -p ${custom_pkg_dir}
     fi
 }
-
+# Copy aur packages in custom_pkg_dir
+cp_aur() {
+  find $aur_dir \( -iname "*.xz" -o -iname "*.zst" \) -exec cp {} $custom_pkg_dir \;
+}
 # Pull packages from Internet
 # See packages.sh
 make_download() {
@@ -43,6 +47,7 @@ make_download() {
     source "detect_packages.sh"
 # -w ==> Download without installing the packages
     pacman -Syw --root ${temp_mnt} --cachedir ${custom_pkg_dir} --noconfirm $ALL_PACKAGES
+    cp_aur
 }
 
 # Create Pacman DB

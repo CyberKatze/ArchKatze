@@ -36,7 +36,7 @@ My Customized Arch Linux to increase productivity.
 - Run `git pull --recurse-submodules`
 
 ### Generating the ISO file
-
+- Run `$ ./aur_download.sh` (Download aur packages from `aur_packages`)
 - Run `$ sudo ./build.sh -v`
 - Get the ISO file in the *parent* directory of this repository.
 - You need to have `archiso` installed in your system to use this script, and a working internet connection to pull the packages that we'll embed into the ISO. The embedded packages are detected using `detect_packages.sh`, will be downloaded in `airootfs/root/pkg`, and will be automatically updated when

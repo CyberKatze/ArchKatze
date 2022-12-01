@@ -158,6 +158,8 @@ xdg-user-dirs-gtk
 xdg-utils
 xz
 neofetch
+neovim
+discord
 # }}}
 
 ## Network {{{
@@ -292,5 +294,16 @@ xf86-video-vmware
 #}}}
 
 # Custom yay package {{{
-neovim
+yay-git
+visual-studio-code-bin
+ventoy-bin
+zotero-bin
+qv2ray
+anki-bin
+brave-bin
+dragon-drag-and-drop
+flameshot-git
+autotiling-git
+wofi-emoji-git
+swaync
 # }}}
