@@ -20,26 +20,26 @@ Download() {
   [ ! -d $repo_dir/tmp ] && mkdir "$repo_dir/tmp"
   for p in $(packages)
   do
-    printf "\e[32;1m Downloading '$p'...\e[0m \n"
+    pck_name=${p%%=*}
+    pck_url=${p##*=}
+    printf "\e[32;1m Downloading '$pck_name'...\e[0m \n"
     pushd $repo_dir
-    [ ! -d "$p" ] && mkdir "$p"
+    [ ! -d "$pck_name" ] && mkdir "$pck_name"
     # Make a temporary directory for package and download package there
 
     printf "create temp"
-    pushd "tmp"
-    yay -G $p
-    popd
+    git clone $pck_url ./tmp/$pck_name
     # Check if we have the package or not
     if [ -e "$p/PKGBUILD" ]
     then 
-      remote_ver=$(get_version "tmp/$p/PKGBUILD")
-      local_ver=$(get_version "$p/PKGBUILD")
+      remote_ver=$(get_version "tmp/$pck_name/PKGBUILD")
+      local_ver=$(get_version "$pck_name/PKGBUILD")
       # Check if local_ver need update or not
       if verlt $local_ver $remote_ver
       then
-        rm -rf $p
-        mv tmp/$p $p
-        pushd $p 
+        rm -rf $pck_name
+        mv tmp/$pck_name $pck_name
+        pushd $pck_name 
         makepkg -c
         popd
       else
@@ -48,9 +48,9 @@ Download() {
       fi
 
     else
-        rm -rf $p
-        mv tmp/$p $p
-        pushd $p 
+        rm -rf $pck_name
+        mv tmp/$pck_name $pck_name
+        pushd $pck_name 
         makepkg -c
         popd
     fi
