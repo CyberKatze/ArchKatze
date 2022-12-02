@@ -25,16 +25,6 @@ My Customized Arch Linux to increase productivity.
 
 ## ⚡ How It Works
 
-
-### Retrieving this repository
-
-- Clone this repo.
-- Initialize submodules (`git submodule init`)
-- Update submodules (`git submodule update`)
-
-### Updating this repository (and the submodule)
-- Run `git pull --recurse-submodules`
-
 ### Generating the ISO file
 - Run `$ ./aur_download.sh` (Download aur packages from `aur_packages`)
 - Run `$ sudo ./build.sh -v`
