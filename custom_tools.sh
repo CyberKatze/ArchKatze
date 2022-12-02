@@ -8,7 +8,7 @@ out_dir="out"
 aur_dir="aur_repo"
 temp_mnt="${script_path}/TEMPMNT"
 custom_pkg_dir="${script_path}/airootfs/root/pkg"
-UPDATECACHE=0
+UPDATECACHE=1
 
 # Helper function to run make_*() only one time per architecture.
 run_once() {
@@ -91,5 +91,4 @@ wrap_up() {
     rm ${work_dir} -rf
     rm ${temp_mnt} -rf
     chown $OWNER:$OWNER ${out_dir}/*.iso -v
-    mv ${out_dir}/* .. -v
 }
