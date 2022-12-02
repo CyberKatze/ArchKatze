@@ -11,9 +11,6 @@ set -e -u
 # Make ${work_dir} directory
 mkdir -p "${work_dir}"
 
-# Download AUR packages
-./aur_download.sh
-
 # Generate local repo
 run_once make_local_repo
 
