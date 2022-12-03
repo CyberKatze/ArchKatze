@@ -26,9 +26,11 @@ My Customized Arch Linux to increase productivity.
 ## ⚡ How It Works
 
 ### Generating the ISO file
-- Run `$ ./aur_download.sh` (Download aur packages from `aur_packages`)
-- Run `$ sudo ./build.sh -v`
-- Get the ISO file in the *parent* directory of this repository.
+- Run `$ make aur` (Download aur packages from `aur_packages`)
+- Run `$ make build` (Build the archkatze iso file)
+- Run `$ make docker` (Build the archkatze iso file using docker)
+- Run `$ make clean` (Clean up temporary directories)
+- Get the ISO file in the `./out` directory. 
 - You need to have `archiso` installed in your system to use this script, and a working internet connection to pull the packages that we'll embed into the ISO. The embedded packages are detected using `detect_packages.sh`, will be downloaded in `airootfs/root/pkg`, and will be automatically updated when
 you run `build.sh` (the ISO-building script).
 - If you don't want to auto-update the packages when running the script,
