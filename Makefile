@@ -6,7 +6,7 @@ custom_pkg_dir := airootfs/root/pkg
 
 docker:
 	@printf "\e[32;1m Building ArchKatze using Docker...\e[0m \n"
-	@docker build -t ${docker_image} -f Dockerfile .
+	@docker build -t ${docker_image} ./dockerfile 
 	@[ ! -d ${out_dir} ] && mkdir ${out_dir}  && chmod o+xwr ${out_dir} || echo "out direcotry exist"
 	@[ ! -d ${aur_dir} ] && mkdir ${aur_dir}  && chmod o+xwr ${aur_dir} || echo "temp direcotry exist"
 	@[ ! -d ${custom_pkg_dir} ] && mkdir ${custom_pkg_dir}  && chmod o+xwr ${custom_pkg_dir} || echo "package direcotry exist"
