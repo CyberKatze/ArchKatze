@@ -38,7 +38,7 @@ make_folder() {
 }
 # Copy aur packages in custom_pkg_dir
 cp_aur() {
-  find $aur_dir \( -iname "*.xz" -o -iname "*.zst" \) -exec cp {} $custom_pkg_dir \;
+  find $aur_dir \( -iname "*.xz" -o -iname "*.zst" \) -exec cp {} ${custom_pkg_dir} \;
 }
 # Pull packages from Internet
 # See packages.sh

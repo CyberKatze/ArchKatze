@@ -8,7 +8,7 @@ docker:
 	@printf "\e[32;1m Building ArchKatze using Docker...\e[0m \n"
 	@docker build -t ${docker_image} -f Dockerfile .
 	@[ ! -d ${out_dir} ] && mkdir ${out_dir}  && chmod o+xwr ${out_dir} || echo "out direcotry exist"
-	@[ ! -d ${temp_mnt} ] && mkdir ${temp_mnt}  && chmod o+xwr ${temp_mnt} || echo "temp direcotry exist"
+	@[ ! -d ${aur_dir} ] && mkdir ${aur_dir}  && chmod o+xwr ${aur_dir} || echo "temp direcotry exist"
 	@[ ! -d ${custom_pkg_dir} ] && mkdir ${custom_pkg_dir}  && chmod o+xwr ${custom_pkg_dir} || echo "package direcotry exist"
 	docker run --name builder --privileged \
 	--mount type=bind,source=${current_dir}/${out_dir},target=/home/builder/archkatze/${out_dir} \

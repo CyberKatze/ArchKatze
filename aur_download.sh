@@ -40,7 +40,7 @@ Download() {
         rm -rf $pck_name
         mv tmp/$pck_name $pck_name
         pushd $pck_name 
-        makepkg -cs
+        makepkg -cs --noconfirm
         popd
       else
         printf "\e[35;1m Package is up to date \e[0m \n"
@@ -51,7 +51,7 @@ Download() {
         rm -rf $pck_name
         mv tmp/$pck_name $pck_name
         pushd $pck_name 
-        makepkg -cs
+        makepkg -cs --noconfirm
         popd
     fi
   popd
