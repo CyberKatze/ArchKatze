@@ -236,10 +236,7 @@ swaybg
 waybar
 polkit-gnome
 thunar
-grim
-slurp
 wofi
-mako
 wayland-protocols
 xorg-xwayland
 egl-wayland
@@ -249,6 +246,7 @@ brightnessctl
 pamixer
 wl-clipboard
 network-manager-applet
+light
 
 ## Editor
 vim
@@ -302,7 +300,7 @@ qv2ray
 anki-bin
 brave-bin
 dragon-drop
-flameshot-git
+grimshot
 autotiling-git
 wofi-emoji-git
 swaync
