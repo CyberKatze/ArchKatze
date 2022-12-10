@@ -1,0 +1,262 @@
+#vim:fileencoding=utf-8:foldmethod=marker
+
+#: Basic Settings {{{
+
+set ratios 1:2:3
+#set cleaner ~/.config/lf/cleaner_kitty.sh
+#set previewer ~/.config/lf/preview_kitty.sh
+set previewer stpv
+set cleaner stpvimgclr
+&stpvimg --listen $id
+cmd on-quit $stpvimg --end $id
+set preview true
+set hidden true
+set drawbox true
+set icons true
+set ignorecase true
+
+#: }}}
+
+#: Custom Functions {{{
+
+cmd open &{{
+    case $(file -b --mime-type "$f") in
+        text/*|application/json) xdg-open "$f";;
+        application/x-bittorrent) transmission-cli "$f";;
+        *) xdg-open "$f" > /dev/null 2>&1  ;;
+    esac
+}}
+
+cmd mkdir %{{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}} 
+
+cmd mkfile %{{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod %{{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+cmd dragon1 %{{
+    echo -e "$fx" | awk '{printf "\"" $0 "\" "}' | xargs dragon-drag-and-drop -a -x
+  }} 
+
+cmd chown %{{
+  printf "newowner:newgorup: "
+  read ans
+
+  for file in "$fx"
+  do
+    chown $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+cmd sudomkfile %{{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+cmd setwallpaper ${{
+ for x in $(xfconf-query --channel xfce4-desktop --list | grep last-image)
+do
+	xfconf-query --channel xfce4-desktop --property $x --set "$f"
+done
+read ans
+}}
+cmd fzf_jump ${{
+  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd fzf_search ${{
+    res="$( \
+        RG_PREFIX="rg --column --line-number --no-heading --color=always \
+            --smart-case "
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1
+    )"
+    [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+}}
+
+cmd broot_jump ${{
+  f=$(mktemp)
+  res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+  rm -f "$f"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd dragon-stay &dragon-drag-and-drop -a $fx 
+cmd dragon-individual %dragon-drag-and-drop $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f.zip" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+# Trash cli bindings
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd clear_trash %trash-empty
+
+cmd restore_trash ${{
+  trash-restore
+}}
+cmd configrc ${{
+    $EDITOR ~/.config/lf/lfrc
+  }}
+
+cmd stripspace %stripspace "$f"
+
+
+# Bindings
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+
+# File Openers
+map ee $$EDITOR "$f"
+
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+# Trash Mappings
+map dd trash
+map tc clear_trash
+map tr restore_trash
+
+# Broot Mapping
+map f broot_jump
+
+# Dragon Mapping
+map dr dragon1
+map ds dragon-stay
+map di dragon-individual
+map dm mvdragon
+map dc cpdragon
+map dl dlfile
+
+# fuzzy finder and rip grep
+map gr :fzf_search
+map <c-f> :fzf_jump
+
+map ss stripspace
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map C clear
+map <enter> open
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ms $mkscript
+map ch chmod
+map co chown
+map bg setwallpaper
+map ci configrc
+map o open
+map br $vimv $fx
+map r rename
+map H top
+map L bottom
+map R reload;redraw
+map U unselect
+
+# Movement
+map gtr cd ~/.local/share/Trash/files
+map gus cd /run/media/brodie
+
+map gv cd ~/Videos
+
+map gp cd ~/Pictures
+
+
+map gd cd ~/Documents
+
+map gD cd ~/Downloads
+map gb cd ~/Books
+map gB cd ~/Books/Current
+
+
+map gc cd ~/.config
+map gl cd ~/.local
+map gE cd /etc
+map gU. cd /usr
+map gUs cd /usr/share
+
+map gh cd ~
