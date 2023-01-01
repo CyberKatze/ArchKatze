@@ -1,0 +1,4 @@
+sourceDir: ./airootfs/home/live/.local/share/chezmoi
+cacheDir: ./airootfs/home/live/.cache/chezmoi
+configFile: ./airootfs/home/live/.config/chezmoi/chezmoi.yaml
+homeDir: ./airootfs/home/live
