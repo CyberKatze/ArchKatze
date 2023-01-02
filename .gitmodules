@@ -1,0 +1,3 @@
+[submodule "airootfs/home/live/.local/share/chezmoi"]
+	path = airootfs/home/live/.local/share/chezmoi
+	url = https://github.com/cyberkatze/dotfiles
