@@ -1,3 +1,3 @@
 #!/bin/bash
-./aur_download.sh
+./pre-install.sh
 sudo ./build.sh -v

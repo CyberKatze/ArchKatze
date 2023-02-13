@@ -16,7 +16,7 @@ packages() {
   awk  '/^[^#].*/ {print $0}' $pkgs
 }
 
-Download() {
+aur_download() {
   [ ! -d $repo_dir/tmp ] && mkdir "$repo_dir/tmp"
   for p in $(packages)
   do
@@ -58,5 +58,5 @@ Download() {
   done
 }
 
-Download
+aur_download
 

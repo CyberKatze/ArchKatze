@@ -265,6 +265,10 @@ obsidian
 obs-studio
 gammastep
 lf
+glow
+blender
+docker
+docker-compose
 
 ## Programming Languages
 rust
