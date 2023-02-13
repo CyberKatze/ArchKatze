@@ -267,6 +267,9 @@ gammastep
 lf
 glow
 blender
+libdecor
+opencl-nvidia
+opencl-meson
 docker
 docker-compose
 

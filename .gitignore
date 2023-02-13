@@ -5,5 +5,6 @@ out/
 aur_repo/
 airootfs/home/live/*
 !airootfs/home/live/Pictures/
+!airootfs/home/live/.stay
 chezmoistate.boltdb
 

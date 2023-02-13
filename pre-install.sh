@@ -1,5 +1,4 @@
 #!/bin/bash
-./aur_download.sh
 
 HOME=$(readlink -f ./airootfs/home/live)
 
@@ -25,3 +24,5 @@ rm -rf $HOME/gtk
 [ -d $HOME/Documents/Obsidian ] && mkdir -p $HOME/Documents/Obsidian
 git clone https://github.com/cyberkatze/obsidian-cyberkatze $HOME/Documents/Obsidian/obsidian-cyberkatze
 
+# Download AUR packages
+./aur_download.sh
