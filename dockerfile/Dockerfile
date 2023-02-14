@@ -1,5 +1,5 @@
 FROM archlinux:latest
-RUN pacman -Syy && pacman -S git archiso sudo base-devel make chezmoi --noconfirm
+RUN pacman -Syy && pacman -S curl git archiso sudo base-devel make chezmoi --noconfirm
 RUN useradd -m -s /bin/bash -G wheel builder
 RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER builder
