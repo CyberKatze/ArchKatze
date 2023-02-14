@@ -58,5 +58,6 @@ aur_download() {
   done
 }
 
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
 aur_download
 

@@ -15,9 +15,8 @@ git clone https://github.com/cyberkatze/fonts $HOME/.fonts
 git clone https://github.com/cyberkatze/fav-wallpaper $HOME/Pictures/Wallpapers
 
 # Download gtk icons and theme
-[ -d $HOME/.icons ] && mkdir -p $HOME/Pictures/Wallpapers
 git clone https://github.com/cyberkatze/gtk $HOME/gtk
-mv $HOME/.icons $HOME/.theme $HOME
+mv $HOME/gtk/.icons $HOME/gtk/.themes $HOME
 rm -rf $HOME/gtk
 
 # Download Obsidian template
