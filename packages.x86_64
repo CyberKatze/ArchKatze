@@ -269,7 +269,7 @@ glow
 blender
 libdecor
 opencl-nvidia
-opencl-meson
+opencl-mesa
 docker
 docker-compose
 
@@ -332,7 +332,7 @@ anki-bin
 brave-bin
 dragon-drop
 grimshot
-autotiling-git
+autotiling
 wofi-emoji-git
 swaync
 spotify
