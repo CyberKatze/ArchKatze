@@ -274,7 +274,6 @@ docker
 docker-compose
 telegram-desktop
 imv
-calibre
 
 ## Programming Languages
 rust
@@ -289,10 +288,8 @@ vim
 file-roller
 
 ## Image viewer
-ristretto
 
 ## Video player
-parole
 
 ## Browser
 firefox
