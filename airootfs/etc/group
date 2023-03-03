@@ -5,4 +5,5 @@ uucp:x:14:live
 nopasswdlogin:x:966:live
 rfkill:x:983:live
 sys:x:3:bin,live
+video:x:985:live
 live:x:1000:live

@@ -272,6 +272,9 @@ opencl-nvidia
 opencl-mesa
 docker
 docker-compose
+telegram-desktop
+imv
+calibre
 
 ## Programming Languages
 rust
